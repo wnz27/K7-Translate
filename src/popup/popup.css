@@ -1,0 +1,15 @@
+body { width: 350px; }
+main { padding: 20px; }
+header { display: flex; align-items: center; justify-content: space-between; }
+.icon-button { width: 32px; height: 32px; padding: 0; border: 0; background: transparent; color: var(--muted); font-size: 16px; }
+.service-card { margin: 20px 0; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.section-heading { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 14px; }
+h1 { margin: 0; font: 600 20px/1.25 "Iowan Old Style", "Songti SC", serif; }
+.progress { color: var(--accent); font-size: 11px; font-variant-numeric: tabular-nums; }
+#translate-page, #restore { width: 100%; }
+.modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin: 12px 0; padding: 3px; border: 1px solid var(--line); border-radius: 8px; }
+.modes button { padding: 7px; border: 0; border-radius: 5px; color: var(--muted); background: transparent; font-size: 12px; }
+.modes button.active { color: var(--ink); background: var(--paper); box-shadow: 0 1px 4px #29292318; font-weight: 600; }
+.page-message { min-height: 18px; margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+footer { margin-top: 20px; color: #989185; font-size: 10px; text-align: center; }
+[hidden] { display: none !important; }

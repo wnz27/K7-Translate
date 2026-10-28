@@ -1,0 +1,24 @@
+body { min-width: 320px; }
+main { width: min(760px, calc(100% - 40px)); margin: 0 auto; padding: 42px 0 60px; }
+header { display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+header p { margin: 0; color: var(--muted); font: 16px "Iowan Old Style", "Songti SC", serif; }
+section { padding: 30px 0; border-bottom: 1px solid var(--line); }
+.section-title { display: flex; gap: 16px; margin-bottom: 24px; }
+.section-title > span { padding-top: 4px; color: var(--accent); font: 12px "Iowan Old Style", serif; }
+h1 { margin: 0 0 5px; font: 600 24px "Iowan Old Style", "Songti SC", serif; }
+.section-title p { margin: 0; color: var(--muted); font-size: 12px; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding-left: 34px; }
+label { display: flex; flex-direction: column; gap: 7px; color: var(--muted); font-size: 12px; }
+label.wide { grid-column: 1 / -1; }
+input, select { width: 100%; padding: 10px 11px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--paper); }
+input:focus, select:focus { border-color: var(--accent); }
+.toggle { flex-direction: row; align-items: center; gap: 10px; color: var(--ink); }
+.toggle input { width: 16px; height: 16px; accent-color: var(--accent); }
+.actions { display: flex; align-items: center; gap: 10px; padding: 24px 0 0 34px; flex-wrap: wrap; }
+.actions .status { flex-basis: 100%; margin-top: 6px; }
+@media (max-width: 560px) {
+  header { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .fields { grid-template-columns: 1fr; padding-left: 0; }
+  .fields label { grid-column: 1; }
+  .actions { padding-left: 0; }
+}

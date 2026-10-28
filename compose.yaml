@@ -1,0 +1,24 @@
+services:
+  model:
+    build: .
+    environment:
+      MODEL_REPO: ${MODEL_REPO:-IndexTeam/Index-Translate-2B-GGUF}
+      MODEL_REVISION: ${MODEL_REVISION:-master}
+      MODEL_FILE: ${MODEL_FILE:-Index-Translate-2B.Q4_K_M.gguf}
+      MODEL_ALIAS: ${MODEL_ALIAS:-Index-Translate-2B}
+      MODEL_BASE_URL: ${MODEL_BASE_URL:-https://modelscope.cn/models}
+      CONTEXT_SIZE: ${CONTEXT_SIZE:-8192}
+    ports:
+      - "127.0.0.1:${K7_PORT:-8000}:8080"
+    volumes:
+      - k7-models:/models
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8080/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  k7-models:

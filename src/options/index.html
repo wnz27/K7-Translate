@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K7 Translate 设置</title>
+    <link rel="stylesheet" href="../shared/ui.css" />
+    <link rel="stylesheet" href="./options.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="brand"><span class="brand-mark">K7</span>Translate</div>
+        <p>把翻译留在你的设备上。</p>
+      </header>
+      <form id="settings-form">
+        <section>
+          <div class="section-title"><span>01</span><div><h1>模型服务</h1><p>任何 OpenAI 兼容端点都可以成为翻译后端。</p></div></div>
+          <div class="fields">
+            <label>提供者<select id="providerType"><option value="index-translate">OpenAI 兼容服务</option></select></label>
+            <label class="wide">Base URL<input id="baseUrl" type="url" required placeholder="http://127.0.0.1:8000/v1" /></label>
+            <label>模型名称<input id="model" required /></label>
+            <label>API Key（可选）<input id="apiKey" type="password" autocomplete="off" /></label>
+            <label>提示词预设<select id="promptPreset"><option value="index">Index-Translate</option><option value="simple">通用翻译</option></select></label>
+            <label>请求超时（秒）<input id="requestTimeout" type="number" min="5" max="600" required /></label>
+          </div>
+        </section>
+        <section>
+          <div class="section-title"><span>02</span><div><h1>阅读偏好</h1><p>源语言由模型自动识别。</p></div></div>
+          <div class="fields">
+            <label>默认目标语言<select id="targetLanguage"></select></label>
+            <label>整页翻译并发数<input id="pageConcurrency" type="number" min="1" max="4" required /></label>
+            <label class="toggle wide"><input id="autoSelection" type="checkbox" /><span>选中文本后自动翻译</span></label>
+          </div>
+        </section>
+        <div class="actions">
+          <button class="primary" type="submit">保存设置</button>
+          <button id="test-connection" class="secondary" type="button">保存并测试真实翻译</button>
+          <div id="result" class="status"><span class="status-dot"></span><span>配置保存在当前浏览器中。</span></div>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>

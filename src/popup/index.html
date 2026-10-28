@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K7 Translate</title>
+    <link rel="stylesheet" href="../shared/ui.css" />
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="brand"><span class="brand-mark">K7</span>Translate</div>
+        <button id="options" class="icon-button" title="设置" aria-label="打开设置">⚙</button>
+      </header>
+      <section class="service-card">
+        <p class="eyebrow">Local intelligence</p>
+        <div id="service-status" class="status"><span class="status-dot"></span><span>正在检查本地模型…</span></div>
+      </section>
+      <section class="page-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">This page</p><h1>读原文，也读译文</h1></div>
+          <span id="progress" class="progress"></span>
+        </div>
+        <button id="translate-page" class="primary">翻译本页正文</button>
+        <div id="modes" class="modes" role="group" aria-label="页面翻译模式">
+          <button data-mode="original">原文</button>
+          <button data-mode="bilingual" class="active">双语</button>
+          <button data-mode="translated">译文</button>
+        </div>
+        <button id="restore" class="secondary" hidden>恢复原始页面</button>
+        <p id="page-message" class="page-message">选中页面文字即可自动翻译。</p>
+      </section>
+      <footer>文本仅发送到你配置的模型服务</footer>
+    </main>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>

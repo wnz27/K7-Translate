@@ -1,0 +1,19 @@
+{
+  "name": "k7-translate",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-model translation extension for Microsoft Edge",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^3.0.0",
+    "@types/chrome": "^0.3.7",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  },
+  "packageManager": "pnpm@9.15.9"
+}

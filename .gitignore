@@ -31,3 +31,9 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+node_modules/
+dist/
+.runtime/
+.playwright-cli/
+.DS_Store

@@ -1,0 +1,81 @@
+:root {
+  font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #292923;
+  background: #f3efe6;
+  font-synthesis: none;
+  --paper: #f8f5ee;
+  --ink: #292923;
+  --muted: #777269;
+  --line: #d8d1c4;
+  --accent: #a64127;
+  --accent-soft: #eee0d5;
+  --success: #396b54;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Iowan Old Style", "Songti SC", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 8px;
+  color: #fffaf2;
+  background: var(--accent);
+  font: 700 14px/1 "Iowan Old Style", serif;
+  letter-spacing: -.05em;
+}
+.eyebrow {
+  margin: 0 0 5px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.muted { color: var(--muted); }
+.primary, .secondary, .icon-button {
+  border: 1px solid var(--ink);
+  border-radius: 7px;
+  padding: 10px 14px;
+  transition: transform .15s ease, background .15s ease;
+}
+.primary { color: #fffaf2; background: var(--ink); }
+.primary:hover { background: #10100e; transform: translateY(-1px); }
+.primary:disabled { cursor: wait; opacity: .55; transform: none; }
+.secondary { color: var(--ink); background: transparent; border-color: var(--line); }
+.secondary:hover { background: #ece7dc; }
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.status-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: #a49e92;
+}
+.status.ok .status-dot { background: var(--success); }
+.status.error .status-dot { background: var(--accent); }
