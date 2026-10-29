@@ -1,6 +1,6 @@
-# K7-Translate
+# K7-Translate · [En](README.en.md)
 
-K7-Translate 是一个面向 Microsoft Edge 的本地模型翻译扩展。选中文本后自动翻译，也可以将网页正文转为可切换的双语对照。默认模型为 [Index-Translate-2B](https://github.com/bilibili/Index-Translate)，通过 llama.cpp 在本机运行。
+K7-Translate 是一个面向 Microsoft Edge 和 Google Chrome 的本地模型翻译扩展。选中文本后自动翻译，也可以将网页正文转为可切换的双语对照。默认模型为 [Index-Translate-2B](https://github.com/bilibili/Index-Translate)，通过 llama.cpp 在本机运行。两个浏览器共用同一份 Manifest V3 构建产物。
 
 ## 功能
 
@@ -93,14 +93,16 @@ curl http://127.0.0.1:8000/v1/chat/completions \
   }'
 ```
 
-### 3. 安装 Edge 扩展
+### 3. 安装 Edge / Chrome 扩展
 
 ```bash
 pnpm install
 pnpm build
 ```
 
-1. 在 Edge 打开 `edge://extensions`。
+Edge 和 Chrome 使用同一份 `dist/`，不需要分别构建。
+
+1. 在 Edge 打开 `edge://extensions`，或在 Chrome 打开 `chrome://extensions`。
 2. 开启“开发人员模式”。
 3. 点击“加载解压缩的扩展”，选择本项目的 `dist/` 目录。
 4. 打开扩展设置，确认 Base URL 为 `http://127.0.0.1:8000/v1`，模型名为 `Index-Translate-2B`。
@@ -115,7 +117,7 @@ pnpm build
 - **显示模式**：在扩展弹窗中切换原文、双语或译文；点击“恢复原始页面”可取消当前页面任务并移除译文。
 - **设置**：可配置模型端点、模型名、API Key、提示词、默认目标语言、超时和整页并发数。
 
-`edge://`、扩展商店、独立 PDF 查看器等受保护页面不支持内容脚本。
+`edge://`、`chrome://`、扩展商店、独立 PDF 查看器等受保护页面不支持内容脚本。
 
 ## 替换模型
 
@@ -189,7 +191,7 @@ scripts/              原生与 Docker 启动脚本
 - **模型返回空内容或思考标签**：确认使用 Index-Translate 提示词，且请求关闭了 thinking。
 - **整页翻译较慢**：本地模型按段推理需要时间；默认并发为 2，可在设置中调整为 1–4。提高并发会增加内存和计算压力。
 - **下载中断**：重新执行相同命令即可复用已下载文件。若 `.part` 文件损坏，可删除 `.runtime/models` 中对应文件或 Docker volume 后重试。
-- **扩展更新后功能异常**：重新运行 `pnpm build`，然后在 `edge://extensions` 中点击扩展的刷新按钮。
+- **扩展更新后功能异常**：重新运行 `pnpm build`，然后在 `edge://extensions` 或 `chrome://extensions` 中点击扩展的刷新按钮。
 
 ## 当前边界
 
@@ -200,7 +202,7 @@ scripts/              原生与 Docker 启动脚本
 
 ## TODO
 
-- Windows 一键安装与启动脚本。
-- 复杂内联格式、动态页面和流式翻译增强。
-- 更多 provider 与 Firefox 适配。
-- Edge 扩展商店发布。
+- [ ] Windows 一键安装与启动脚本。
+- [ ] 复杂内联格式、动态页面和流式翻译增强。
+- [ ] 更多 provider 与 Firefox 适配。
+- [ ] Edge 与 Chrome 扩展商店发布。

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A local-model translation extension for Microsoft Edge",
+  "description": "A local-model translation extension for Microsoft Edge and Google Chrome",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
