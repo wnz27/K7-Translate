@@ -60,7 +60,7 @@ MODEL_BASE_URL="https://huggingface.co" \
 #### macOS / Linux Docker（CPU）
 
 ```bash
-K7_PORT=8000 docker compose up --build -d
+K7_TRANS_PORT=8000 docker compose up --build -d
 ```
 
 查看状态和日志：
@@ -185,7 +185,7 @@ scripts/              原生与 Docker 启动脚本
 ## 故障排查
 
 - **无法连接服务**：确认终端或容器仍在运行，检查端口是否一致，然后访问 `http://127.0.0.1:端口/health`。
-- **端口被占用**：原生使用 `--port 8123`，Docker 使用 `K7_PORT=8123 docker compose up --build -d`，并同步修改扩展设置。
+- **端口被占用**：原生使用 `--port 8123`，Docker 使用 `K7_TRANS_PORT=8123 docker compose up --build -d`，并同步修改扩展设置。
 - **模型返回空内容或思考标签**：确认使用 Index-Translate 提示词，且请求关闭了 thinking。
 - **整页翻译较慢**：本地模型按段推理需要时间；默认并发为 2，可在设置中调整为 1–4。提高并发会增加内存和计算压力。
 - **下载中断**：重新执行相同命令即可复用已下载文件。若 `.part` 文件损坏，可删除 `.runtime/models` 中对应文件或 Docker volume 后重试。

@@ -9,7 +9,7 @@ services:
       MODEL_BASE_URL: ${MODEL_BASE_URL:-https://modelscope.cn/models}
       CONTEXT_SIZE: ${CONTEXT_SIZE:-8192}
     ports:
-      - "127.0.0.1:${K7_PORT:-8000}:8080"
+      - "127.0.0.1:${K7_TRANS_PORT:-8000}:8080"
     volumes:
       - k7-models:/models
     healthcheck:

@@ -12,7 +12,7 @@ MODEL_PATH="/models/$MODEL_FILE"
 if [ ! -f "$MODEL_PATH" ]; then
   MODEL_URL="$MODEL_BASE_URL/$MODEL_REPO/resolve/$MODEL_REVISION/$MODEL_FILE"
   echo "Downloading model: $MODEL_URL"
-  curl -fL --retry 3 --continue-at - "$MODEL_URL" -o "$MODEL_PATH.part"
+  curl -fL --retry 5 --retry-all-errors --retry-delay 2 --connect-timeout 20 --continue-at - "$MODEL_URL" -o "$MODEL_PATH.part"
   if [ "$(head -c 4 "$MODEL_PATH.part")" != "GGUF" ]; then
     echo "Downloaded file is not a valid GGUF model." >&2
     exit 1

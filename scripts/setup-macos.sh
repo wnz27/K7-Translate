@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-PORT="${K7_PORT:-8000}"
+PORT="${K7_TRANS_PORT:-8000}"
 LLAMA_VERSION="${LLAMA_VERSION:-b11941}"
 LLAMA_INSTALL_REPO="${LLAMA_INSTALL_REPO:-https://hf-mirror.com/buckets/ggml-org/install.sh/resolve}"
 MODEL_REPO="${MODEL_REPO:-IndexTeam/Index-Translate-2B-GGUF}"
@@ -67,7 +67,7 @@ fi
 if [[ ! -f "$MODEL_PATH" ]]; then
   MODEL_URL="$MODEL_BASE_URL/$MODEL_REPO/resolve/$MODEL_REVISION/$MODEL_FILE"
   echo "下载模型：$MODEL_URL"
-  curl -fL --retry 3 --continue-at - "$MODEL_URL" -o "$MODEL_PATH.part"
+  curl -fL --retry 5 --retry-all-errors --retry-delay 2 --connect-timeout 20 --continue-at - "$MODEL_URL" -o "$MODEL_PATH.part"
   if [[ "$(head -c 4 "$MODEL_PATH.part")" != "GGUF" ]]; then
     echo "下载内容不是有效的 GGUF 文件。" >&2
     exit 1
