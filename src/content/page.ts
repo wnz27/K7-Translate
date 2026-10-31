@@ -1,7 +1,7 @@
 import { getSettings } from '../shared/settings'
 import { cancelTranslation, requestTranslation } from './messaging'
 
-const BLOCK_SELECTOR = 'h1, h2, h3, h4, p, li, blockquote, td, th'
+const BLOCK_SELECTOR = 'h1, h2, h3, h4, p, li, blockquote, td, th, .prose > div.whitespace-pre-wrap'
 const EXCLUDED_SELECTOR = 'script, style, noscript, textarea, input, select, button, nav, pre, code, [contenteditable], [translate="no"], [data-k7-selection], [data-k7-translation]'
 const STYLE_ID = 'k7-page-style'
 
@@ -105,13 +105,13 @@ export class PageTranslator {
   }
 
   private splitText(text: string): string[] {
-    if (text.length <= 1200) return [text]
+    if (text.length <= 1000) return [text]
     const chunks: string[] = []
     let remaining = text
-    while (remaining.length > 1200) {
-      const window = remaining.slice(0, 1200)
+    while (remaining.length > 1000) {
+      const window = remaining.slice(0, 1000)
       const boundary = Math.max(window.lastIndexOf('。'), window.lastIndexOf('. '), window.lastIndexOf('！'), window.lastIndexOf('? '))
-      const end = boundary > 500 ? boundary + 1 : 1200
+      const end = boundary > 500 ? boundary + 1 : 1000
       chunks.push(remaining.slice(0, end).trim())
       remaining = remaining.slice(end).trim()
     }
